@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "732044422300",
+    "firebase_url": "https://loginregisterfire-1792d.firebaseio.com",
+    "project_id": "loginregisterfire-1792d",
+    "storage_bucket": "loginregisterfire-1792d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:732044422300:android:a6e5907a5adbe02a3d9159",
+        "android_client_info": {
+          "package_name": "com.example.loginregisterfire"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "732044422300-2otg57eirlfo6h3891o5q619s8fkrn8k.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.loginregisterfire",
+            "certificate_hash": "20c30e2cf3ad08fc6492e4bca9247aa08f505789"
+          }
+        },
+        {
+          "client_id": "732044422300-uiksoqta2dbejqp9pf91ciebje4b9r05.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCm6TAUTsTgVg0ZrOw-hM-iw60CRxbDjEM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "732044422300-uiksoqta2dbejqp9pf91ciebje4b9r05.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/user_profile_tab"
+        android:icon="@drawable/user_profile_vec"
+        android:title="Profile" />
+    <item
+        android:id="@+id/donate_blood_tab"
+        android:icon="@drawable/donate_blood_vec"
+        android:title="Donate" />
+    <item
+        android:id="@+id/calendar_tab"
+        android:icon="@drawable/calendar_vec"
+        android:title="Calendar" />
+</menu>

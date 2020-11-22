@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "37646826865",
+    "firebase_url": "https://fyptest-4df9c.firebaseio.com",
+    "project_id": "fyptest-4df9c",
+    "storage_bucket": "fyptest-4df9c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:37646826865:android:c299265d7711fdc012cad0",
+        "android_client_info": {
+          "package_name": "com.example.loginregisterfire"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "37646826865-kmfsrinu29mqpu2836t0ur4if8hre1ao.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD4saRN9f8cIE41Mh3v0oV_R7c10sMc36o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "37646826865-kmfsrinu29mqpu2836t0ur4if8hre1ao.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

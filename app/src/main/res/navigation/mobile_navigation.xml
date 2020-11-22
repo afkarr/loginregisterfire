@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@id/user_profile_tab">
+
+    <fragment
+        android:id="@+id/user_profile_tab"
+        android:name="com.example.loginregisterfire.UserProfile"
+        android:label="fragment_user_profile"
+        tools:layout="@layout/fragment_user_profile" />
+    <fragment
+        android:id="@+id/donate_blood_tab"
+        android:name="com.example.loginregisterfire.Donate_Blood"
+        android:label="fragment_donate__blood"
+        tools:layout="@layout/fragment_donate__blood" />
+    <fragment
+        android:id="@+id/calendar_tab"
+        android:name="com.example.loginregisterfire.Calendar"
+        android:label="fragment_calendar"
+        tools:layout="@layout/fragment_calendar" />
+</navigation>
