@@ -21,6 +21,8 @@ import com.google.firebase.firestore.auth.User;
 
 public class MainActivity extends AppCompatActivity {
     FirebaseAuth fAuth;
+    FirebaseFirestore fStore;
+    FirebaseUser user;
 
 
     @Override
@@ -29,6 +31,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         fAuth = FirebaseAuth.getInstance();
+        fStore = FirebaseFirestore.getInstance();
+        user = fAuth.getCurrentUser();
 
         BottomNavigationView bottomView = findViewById(R.id.bottom_view);
         bottomView.setOnNavigationItemSelectedListener(onNav);

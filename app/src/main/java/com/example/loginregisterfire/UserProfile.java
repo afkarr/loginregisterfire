@@ -2,6 +2,7 @@ package com.example.loginregisterfire;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -9,6 +10,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationMenu;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
@@ -38,7 +42,6 @@ public class UserProfile extends Fragment {
     @androidx.annotation.Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @androidx.annotation.Nullable ViewGroup container, @androidx.annotation.Nullable Bundle savedInstanceState) {
-
         View view = inflater.inflate(R.layout.fragment_user_profile,container,false);
         return view;
 
@@ -71,19 +74,37 @@ public class UserProfile extends Fragment {
 
         final DocumentReference documentReference = fStore.collection("users").document(userID);
 
-        documentReference.addSnapshotListener(getActivity(), new EventListener<DocumentSnapshot>() {
+//        documentReference.addSnapshotListener(getActivity(), new EventListener<DocumentSnapshot>() {
+//            @Override
+//            public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
+//                //usernameText.setText(documentSnapshot.getString("Username"));
+//                fullNameText.setText(documentSnapshot.getString("FullName"));
+//                email.setText(documentSnapshot.getString("Email"));
+//
+//                if(documentSnapshot.get("isAdmin") != null){
+//                    usernameText.setText("Admin");
+//                }
+//
+//                if(documentSnapshot.get("isDonor") != null){
+//                    usernameText.setText("Donor");
+//                }
+//            }
+//        });
+
+        documentReference.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
-            public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
-                //usernameText.setText(documentSnapshot.getString("Username"));
-                fullNameText.setText(documentSnapshot.getString("FullName"));
-                email.setText(documentSnapshot.getString("Email"));
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if(task.isComplete()){
+                    Log.d("TAG", "onComplete: "+ task.getResult().getString("Username"));
+                    fullNameText.setText(task.getResult().getString("FullName"));
+                    email.setText(task.getResult().getString("Email"));
 
-                if(documentSnapshot.get("isAdmin") != null){
-                    usernameText.setText("Admin");
-                }
-
-                if(documentSnapshot.get("isDonor") != null){
-                    usernameText.setText("Donor");
+                    if(task.getResult().getString("isAdmin") != null){
+                        usernameText.setText("Admin");
+                    }
+                    if(task.getResult().getString("isDonor") != null){
+                        usernameText.setText("Donor");
+                    }
                 }
             }
         });
