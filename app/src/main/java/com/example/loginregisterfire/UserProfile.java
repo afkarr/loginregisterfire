@@ -1,6 +1,7 @@
 package com.example.loginregisterfire;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
@@ -12,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationMenu;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -21,7 +23,9 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+import com.squareup.picasso.Picasso;
 
 import javax.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -68,8 +72,10 @@ public class UserProfile extends Fragment {
 
         fAuth = FirebaseAuth.getInstance();
         fStore = FirebaseFirestore.getInstance();
-        String userID;
 
+        storageReference = FirebaseStorage.getInstance().getReference();
+
+        String userID;
         userID = fAuth.getCurrentUser().getUid();
 
         final DocumentReference documentReference = fStore.collection("users").document(userID);
@@ -106,6 +112,14 @@ public class UserProfile extends Fragment {
                         usernameText.setText("Donor");
                     }
                 }
+            }
+        });
+
+        StorageReference profileRef = storageReference.child("users/"+fAuth.getCurrentUser().getUid()+"/profile.jpg");
+        profileRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            @Override
+            public void onSuccess(Uri uri) {
+                Picasso.get().load(uri).into(profilePicture);
             }
         });
 
