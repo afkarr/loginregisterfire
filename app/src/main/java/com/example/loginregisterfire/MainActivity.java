@@ -60,6 +60,10 @@ public class MainActivity extends AppCompatActivity {
                     selected = new Donate_Blood();
                     break;
 
+                case R.id.home_tab:
+                    selected = new Home();
+                     break;
+
             }
 
             getSupportFragmentManager().beginTransaction().replace(R.id.container,

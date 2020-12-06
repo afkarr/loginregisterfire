@@ -6,9 +6,14 @@
         android:icon="@drawable/user_profile_vec"
         android:title="Profile" />
     <item
+        android:id="@+id/home_tab"
+        android:icon="@drawable/home_vec"
+        android:title="Home" />
+    <item
         android:id="@+id/donate_blood_tab"
         android:icon="@drawable/donate_blood_vec"
         android:title="Donate" />
+
     <item
         android:id="@+id/calendar_tab"
         android:icon="@drawable/calendar_vec"
