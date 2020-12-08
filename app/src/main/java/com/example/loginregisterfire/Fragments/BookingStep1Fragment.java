@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.loginregisterfire.Adapter.MyHospitalAdapter;
+import com.example.loginregisterfire.Common.Common;
 import com.example.loginregisterfire.Common.SpacesItemDecoration;
 import com.example.loginregisterfire.Interface.IAllHospitalLoadListener;
 import com.example.loginregisterfire.Interface.IBranchLoadListener;
@@ -70,7 +71,7 @@ public class BookingStep1Fragment extends Fragment implements IAllHospitalLoadLi
         iAllHospitalLoadListener = this;
         iBranchLoadListener = this;
 
-        dialog = new SpotsDialog.Builder().setContext(getActivity()).build();
+        dialog = new SpotsDialog.Builder().setContext(getActivity()).setCancelable(false).build();
     }
 
     @Nullable
@@ -135,6 +136,8 @@ public class BookingStep1Fragment extends Fragment implements IAllHospitalLoadLi
     private void loadBranchOfCity(String cityName) {
         dialog.show();
 
+        Common.city = cityName;
+
         branchRef = FirebaseFirestore.getInstance()
                 .collection("AllHospital")
                         .document(cityName)
@@ -147,7 +150,11 @@ public class BookingStep1Fragment extends Fragment implements IAllHospitalLoadLi
                 if(task.isSuccessful())
                 {
                     for(QueryDocumentSnapshot documentSnapshot:task.getResult())
-                        list .add(documentSnapshot.toObject(Hospital.class));
+                    {
+                        Hospital hospital = documentSnapshot.toObject(Hospital.class);
+                        hospital.setHospitalId(documentSnapshot.getId());
+                        list.add(hospital);
+                    }
                     iBranchLoadListener.onBranchLoadSuccess(list);
                 }
             }

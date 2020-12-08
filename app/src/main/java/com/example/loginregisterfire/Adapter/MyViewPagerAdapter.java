@@ -9,6 +9,7 @@ import androidx.fragment.app.FragmentPagerAdapter;
 import com.example.loginregisterfire.Fragments.BookingStep1Fragment;
 import com.example.loginregisterfire.Fragments.BookingStep2Fragment;
 import com.example.loginregisterfire.Fragments.BookingStep3Fragment;
+import com.example.loginregisterfire.Fragments.BookingStep4Fragment;
 
 public class MyViewPagerAdapter extends FragmentPagerAdapter {
 
@@ -27,6 +28,8 @@ public class MyViewPagerAdapter extends FragmentPagerAdapter {
                 return BookingStep2Fragment.getInstance();
             case 2:
                 return BookingStep3Fragment.getInstance();
+            case 3:
+                return BookingStep4Fragment.getInstance();
         }
         return null;
     }
@@ -34,6 +37,6 @@ public class MyViewPagerAdapter extends FragmentPagerAdapter {
     @Override
     public int getCount()
     {
-        return 3;
+        return 4;
     }
 }
