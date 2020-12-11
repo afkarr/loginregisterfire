@@ -58,6 +58,11 @@ public class Booking extends AppCompatActivity {
         {
             Common.step--;
             viewPager.setCurrentItem(Common.step);
+            if(Common.step < 3)
+            {
+                btn_next_step.setEnabled(true);
+                setColorButton();
+            }
         }
     }
     @OnClick(R.id.btn_next_step)
@@ -75,8 +80,19 @@ public class Booking extends AppCompatActivity {
                 if(Common.currentSection != null)
                     loadTimeSlotOfSection(Common.currentSection.getSectionId());
             }
+            else if(Common.step == 3) // Confirm
+            {
+                if(Common.currentTimeSlot != -1)
+                    confirmBooking();
+            }
             viewPager.setCurrentItem(Common.step);
         }
+    }
+
+    private void confirmBooking() {
+        //Send broadcast to fragment step four
+        Intent intent = new Intent(Common.KEY_CONFIRM_BOOKING);
+        localBroadcastManager.sendBroadcast(intent);
     }
 
     private void loadTimeSlotOfSection(String sectionId) {
@@ -138,7 +154,8 @@ public class Booking extends AppCompatActivity {
                 Common.currentHospital = intent.getParcelableExtra(Common.KEY_HOSPITAL_STORE);
             else if (step == 2)
                 Common.currentSection = intent.getParcelableExtra(Common.KEY_SECTION_SELECTED);
-
+            else if (step == 3)
+                Common.currentTimeSlot = intent.getIntExtra(Common.KEY_TIME_SLOT, -1);
 
             btn_next_step.setEnabled(true);
             setColorButton();

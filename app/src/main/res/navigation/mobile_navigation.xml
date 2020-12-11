@@ -17,7 +17,7 @@
         tools:layout="@layout/fragment_donate__blood" />
     <fragment
         android:id="@+id/calendar_tab"
-        android:name="com.example.loginregisterfire.Calendar"
+        android:name="com.example.loginregisterfire.Calendar_r"
         android:label="fragment_calendar"
         tools:layout="@layout/fragment_calendar" />
 </navigation>

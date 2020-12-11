@@ -1,7 +1,13 @@
 package com.example.loginregisterfire.Common;
 
+import android.content.Intent;
+
 import com.example.loginregisterfire.Model.Hospital;
 import com.example.loginregisterfire.Model.Section;
+import com.example.loginregisterfire.Model.TimeSlot;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 public class Common {
     public static final String KEY_ENABLE_BUTTON_NEXT = "ENABLE_BUTTON_NEXT";
@@ -11,10 +17,16 @@ public class Common {
     public static final String KEY_STEP = "STEP";
     public static final String KEY_SECTION_SELECTED = "SECTION_SELECTED";
     public static final int TIME_SLOT_TOTAL = 20; //TIME SLOT AVAILABLE
+    public static final Object DISABLE_TAG = "DISABLE";
+    public static final String KEY_TIME_SLOT = "TIME_SLOT";
+    public static final String KEY_CONFIRM_BOOKING = "CONFIRM_BOOKING";
     public static Hospital currentHospital;
     public static int step = 0;
     public static String city ="";
     public static Section currentSection;
+    public static int currentTimeSlot=-1;
+    public static Calendar currentDate=Calendar.getInstance();
+    public static SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd_MM_yyyy");
 
     public static String convertTimeSlotToString(int slot) {
         switch (slot) {

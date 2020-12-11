@@ -3,20 +3,15 @@ package com.example.loginregisterfire;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MenuItem;
 
-import com.google.android.material.bottomnavigation.BottomNavigationMenu;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.auth.User;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -53,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
                     break;
 
                 case R.id.calendar_tab:
-                    selected = new Calendar();
+                    selected = new Calendar_r();
                     break;
 
                 case R.id.donate_blood_tab:
