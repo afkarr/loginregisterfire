@@ -48,7 +48,6 @@ public class UserProfile extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @androidx.annotation.Nullable ViewGroup container, @androidx.annotation.Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_user_profile,container,false);
         return view;
-
     }
 
     public UserProfile() {

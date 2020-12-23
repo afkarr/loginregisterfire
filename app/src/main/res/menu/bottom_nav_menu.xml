@@ -15,7 +15,7 @@
         android:title="Donate" />
 
     <item
-        android:id="@+id/calendar_tab"
-        android:icon="@drawable/calendar_vec"
-        android:title="Calendar" />
+        android:id="@+id/leaderboard_tab"
+        android:icon="@drawable/ic_baseline_leaderboard_24"
+        android:title="Leaderboard" />
 </menu>

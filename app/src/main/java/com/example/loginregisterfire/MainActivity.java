@@ -72,8 +72,8 @@ public class MainActivity extends AppCompatActivity {
                     selected = new UserProfile();
                     break;
 
-                case R.id.calendar_tab:
-                    selected = new Calendar_r();
+                case R.id.leaderboard_tab:
+                    selected = new Leaderboard();
                     break;
 
                 case R.id.donate_blood_tab:

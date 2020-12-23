@@ -37,7 +37,7 @@ public class SignUp extends AppCompatActivity  {
     ProgressBar progressBar;
     FirebaseAuth fAuth;
     FirebaseFirestore fStore;
-
+    Integer points;
     String userID;
 
     @Override
@@ -90,6 +90,7 @@ public class SignUp extends AppCompatActivity  {
                 String password = textInputEditTextPassword.getText().toString().trim();
                 final String fullName = textInputEditTextFullName.getText().toString();
                final String Username =  textInputEditTextUsername.getText().toString();
+
 
                 if(TextUtils.isEmpty(email)){
                     textInputEditTextEmail.setError("Email is Required.");

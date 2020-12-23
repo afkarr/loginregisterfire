@@ -35,8 +35,8 @@ dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
 
     implementation 'com.google.firebase:firebase-auth:20.0.1'
-    implementation 'com.google.firebase:firebase-firestore:22.0.0'
-    implementation 'com.google.firebase:firebase-storage:19.2.0'
+    implementation 'com.google.firebase:firebase-firestore:22.0.1'
+    implementation 'com.google.firebase:firebase-storage:19.2.1'
     implementation 'androidx.navigation:navigation-fragment:2.3.2'
     implementation 'androidx.navigation:navigation-ui:2.3.2'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
@@ -47,6 +47,7 @@ dependencies {
     implementation 'com.ss.bannerslider:bannerslider:2.0.0'
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
     implementation 'androidx.cardview:cardview:1.0.0'
+    implementation 'com.firebaseui:firebase-ui-firestore:7.1.1'
 
     implementation 'com.shuhart.stepview:stepview:1.5.1'
     implementation 'com.jaredrummler:material-spinner:1.3.1'
@@ -59,6 +60,13 @@ dependencies {
     implementation 'com.karumi:dexter:6.2.2'
 
     implementation 'devs.mulham.horizontalcalendar:horizontalcalendar:1.3.4'
+
+    //Glide
+    implementation 'com.github.bumptech.glide:glide:4.11.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
+
+    //Circle Image View
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
 
     implementation 'com.google.android.material:material:1.2.1'
     implementation 'androidx.appcompat:appcompat:1.2.0'
