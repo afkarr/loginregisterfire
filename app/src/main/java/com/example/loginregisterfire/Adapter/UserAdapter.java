@@ -13,6 +13,8 @@ import com.example.loginregisterfire.R;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class UserAdapter extends FirestoreRecyclerAdapter<UserModel, UserAdapter.UserViewHolder> {
 
     public UserAdapter(@NonNull FirestoreRecyclerOptions<UserModel> options) {
@@ -35,6 +37,7 @@ public class UserAdapter extends FirestoreRecyclerAdapter<UserModel, UserAdapter
 
     public class UserViewHolder extends RecyclerView.ViewHolder {
 
+        CircleImageView userImage;
         TextView username;
         TextView email;
         TextView score;
@@ -42,6 +45,7 @@ public class UserAdapter extends FirestoreRecyclerAdapter<UserModel, UserAdapter
         public UserViewHolder(@NonNull View itemView) {
             super(itemView);
 
+            userImage = itemView.findViewById(R.id.list_image);
             username = itemView.findViewById(R.id.list_username);
             email = itemView.findViewById(R.id.list_email);
             score = itemView.findViewById(R.id.list_score);
