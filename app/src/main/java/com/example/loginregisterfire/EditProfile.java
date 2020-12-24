@@ -22,6 +22,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.SetOptions;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
@@ -36,6 +37,7 @@ public class EditProfile extends AppCompatActivity {
     EditText profileFull, profileEmail;
     ImageView profileImageView;
     Button saveProfile_btn;
+    String userID;
 
     FirebaseAuth fAuth;
     FirebaseFirestore fStore;
@@ -64,6 +66,24 @@ public class EditProfile extends AppCompatActivity {
                     @Override
                     public void onSuccess(Uri uri) {
                         Picasso.get().load(uri).into(profileImageView);
+                        Uri downloadUrl = uri;
+                        Toast.makeText(EditProfile.this, "Upload Done", Toast.LENGTH_LONG).show();
+                        userID = fAuth.getCurrentUser().getUid();
+                        Map<String, Object> file = new HashMap<>();
+                        file.put("url", downloadUrl.toString());
+                        fStore.collection("users").document(userID)
+                                .set(file, SetOptions.merge())
+                                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                    @Override
+                                    public void onSuccess(Void aVoid) {
+                                        Log.d(TAG, "DocumentSnapshot successfully written");
+                                    }
+                                }).addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Log.w(TAG, "Error writing document", e);
+                            }
+                        });
                     }
                 });
             }
@@ -137,7 +157,7 @@ public class EditProfile extends AppCompatActivity {
                                 finish();
                             }
                         });
-                        Toast.makeText(EditProfile.this, "Email is changed.", Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(EditProfile.this, "Email is changed.", Toast.LENGTH_SHORT).show();
                     }
                 }).addOnFailureListener(new OnFailureListener() {
                     @Override

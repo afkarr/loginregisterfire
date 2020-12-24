@@ -5,6 +5,11 @@
     android:layout_height="wrap_content"
     android:padding="15dp">
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/leaderboard_card">
+
     <de.hdodenhof.circleimageview.CircleImageView
         android:layout_width="60dp"
         android:layout_height="60dp"
@@ -44,5 +49,6 @@
         android:layout_marginLeft="30dp"
         android:textColor="#000"/>
 
+    </RelativeLayout>
 
 </RelativeLayout>

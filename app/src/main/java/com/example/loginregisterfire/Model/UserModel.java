@@ -6,13 +6,24 @@ public class UserModel {
     private String Email;
     private long Score;
 
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    private String url;
+
     public UserModel() {
     }
 
-    public UserModel(String fullName, String email, long score) {
+    public UserModel(String fullName, String email, long score, String url) {
         this.FullName = fullName;
         this.Email = email;
         this.Score = score;
+        this.url = url;
     }
 
     public String getFullName() {

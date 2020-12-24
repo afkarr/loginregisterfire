@@ -20,6 +20,7 @@ import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.auth.User;
+import com.google.firebase.storage.StorageReference;
 
 public class Leaderboard extends Fragment{
 
