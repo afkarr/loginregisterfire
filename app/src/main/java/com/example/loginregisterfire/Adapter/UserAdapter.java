@@ -1,6 +1,7 @@
 package com.example.loginregisterfire.Adapter;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,6 +20,7 @@ import com.firebase.ui.storage.images.FirebaseImageLoader;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.storage.StorageReference;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -35,10 +37,13 @@ public class UserAdapter extends FirestoreRecyclerAdapter<UserModel, UserAdapter
         holder.username.setText(model.getFullName());
         holder.email.setText(model.getEmail());
         holder.score.setText(model.getScore()+"");
+        holder.rank.setText(String.valueOf(position + 1));
+
 
         Glide.with(holder.userImage.getContext())
                 .load(model.getUrl())
                 .into(holder.userImage);
+
     }
 
 
@@ -55,6 +60,7 @@ public class UserAdapter extends FirestoreRecyclerAdapter<UserModel, UserAdapter
         TextView username;
         TextView email;
         TextView score;
+        TextView rank;
 
         public UserViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -63,6 +69,7 @@ public class UserAdapter extends FirestoreRecyclerAdapter<UserModel, UserAdapter
             username = itemView.findViewById(R.id.list_username);
             email = itemView.findViewById(R.id.list_email);
             score = itemView.findViewById(R.id.list_score);
+            rank = itemView.findViewById(R.id.leaderboard_position);
         }
     }
 }
