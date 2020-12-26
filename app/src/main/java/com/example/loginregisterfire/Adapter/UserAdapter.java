@@ -46,9 +46,9 @@ public class UserAdapter extends FirestoreRecyclerAdapter<UserModel, UserAdapter
         if (position == 0 || position == 1 || position == 2 && mLeaderboardListener != null)
             mLeaderboardListener.topLeaderboardListener(position, model.getUrl());
 
-//        Glide.with(holder.userImage.getContext())
-//                .load(model.getUrl())
-//                .into(holder.userImage);
+        Glide.with(holder.userImage.getContext())
+                .load(model.getUrl())
+                .into(holder.userImage);
 
 
     }
