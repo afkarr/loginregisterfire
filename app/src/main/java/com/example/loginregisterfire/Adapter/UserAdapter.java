@@ -44,6 +44,7 @@ public class UserAdapter extends FirestoreRecyclerAdapter<UserModel, UserAdapter
                 .load(model.getUrl())
                 .into(holder.userImage);
 
+
     }
 
 
@@ -62,6 +63,10 @@ public class UserAdapter extends FirestoreRecyclerAdapter<UserModel, UserAdapter
         TextView score;
         TextView rank;
 
+        CircleImageView firstPlace;
+        CircleImageView secondPlace;
+        CircleImageView thirdPlace;
+
         public UserViewHolder(@NonNull View itemView) {
             super(itemView);
 
@@ -70,6 +75,10 @@ public class UserAdapter extends FirestoreRecyclerAdapter<UserModel, UserAdapter
             email = itemView.findViewById(R.id.list_email);
             score = itemView.findViewById(R.id.list_score);
             rank = itemView.findViewById(R.id.leaderboard_position);
+
+            firstPlace = itemView.findViewById(R.id.place1stProfile);
+            secondPlace = itemView.findViewById(R.id.place2ndProfile);
+            thirdPlace = itemView.findViewById(R.id.place3rdProfile);
         }
     }
 }

@@ -37,7 +37,7 @@ public class SignUp extends AppCompatActivity  {
     ProgressBar progressBar;
     FirebaseAuth fAuth;
     FirebaseFirestore fStore;
-    Integer points;
+    long points = 0;
     String userID;
 
     @Override
@@ -124,6 +124,7 @@ public class SignUp extends AppCompatActivity  {
                             user.put("FullName", fullName);
                             user.put("Email", email);
                             user.put("Username", Username);
+                            user.put("Score", points);
 
                             if(isAdmin.isChecked()){
                                 user.put("isAdmin", "1");

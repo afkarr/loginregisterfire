@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.loginregisterfire.Adapter.UserAdapter;
+import com.example.loginregisterfire.Interface.LeaderboardListener;
 import com.example.loginregisterfire.Model.UserModel;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
@@ -72,4 +73,5 @@ public class Leaderboard extends Fragment{
         leaderboard_recycler.setAdapter(adapter);
         leaderboard_recycler.invalidate();
     }
+
 }
