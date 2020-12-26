@@ -7,12 +7,14 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import de.hdodenhof.circleimageview.CircleImageView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.loginregisterfire.Adapter.UserAdapter;
 import com.example.loginregisterfire.Interface.LeaderboardListener;
 import com.example.loginregisterfire.Model.UserModel;
@@ -23,7 +25,7 @@ import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.auth.User;
 import com.google.firebase.storage.StorageReference;
 
-public class Leaderboard extends Fragment{
+public class Leaderboard extends Fragment {
 
     private RecyclerView leaderboard_recycler;
     private FirestoreRecyclerAdapter adapter;
@@ -43,15 +45,15 @@ public class Leaderboard extends Fragment{
     @Override
     public void onStop() {
         super.onStop();
-        if(adapter != null)
-        adapter.stopListening();
+        if (adapter != null)
+            adapter.stopListening();
     }
 
     @Override
     public void onStart() {
         super.onStart();
-        if(adapter != null)
-        adapter.startListening();
+        if (adapter != null)
+            adapter.startListening();
     }
 
 
@@ -67,7 +69,31 @@ public class Leaderboard extends Fragment{
                 .setQuery(query, UserModel.class)
                 .build();
 
-        adapter = new UserAdapter(options);
+        adapter = new UserAdapter(options, new LeaderboardListener() {
+            @Override
+            public void topLeaderboardListener(int place, String url) {
+
+                CircleImageView imageView = null;
+                switch (place) {
+
+                    case 0:
+                        imageView = requireView().findViewById(R.id.place1stProfile);
+                        break;
+                    case 1:
+                        imageView = requireView().findViewById(R.id.place2ndProfile);
+                        break;
+                    case 2:
+                        imageView = requireView().findViewById(R.id.place3rdProfile);
+
+                }
+
+                if (imageView != null)
+                    Glide.with(requireContext())
+                            .load(url)
+                            .into(imageView);
+            }
+        });
+
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
         leaderboard_recycler.setLayoutManager(linearLayoutManager);
         leaderboard_recycler.setAdapter(adapter);

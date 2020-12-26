@@ -12,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.loginregisterfire.Interface.LeaderboardListener;
 import com.example.loginregisterfire.Model.UserModel;
 import com.example.loginregisterfire.R;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
@@ -27,8 +28,11 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class UserAdapter extends FirestoreRecyclerAdapter<UserModel, UserAdapter.UserViewHolder> {
 
-    public UserAdapter(@NonNull FirestoreRecyclerOptions<UserModel> options) {
+    LeaderboardListener mLeaderboardListener;
+
+    public UserAdapter(@NonNull FirestoreRecyclerOptions<UserModel> options, LeaderboardListener listener) {
         super(options);
+        mLeaderboardListener = listener;
     }
 
     @Override
@@ -36,13 +40,15 @@ public class UserAdapter extends FirestoreRecyclerAdapter<UserModel, UserAdapter
 
         holder.username.setText(model.getFullName());
         holder.email.setText(model.getEmail());
-        holder.score.setText(model.getScore()+"");
+        holder.score.setText(model.getScore() + "");
         holder.rank.setText(String.valueOf(position + 1));
 
+        if (position == 0 || position == 1 || position == 2 && mLeaderboardListener != null)
+            mLeaderboardListener.topLeaderboardListener(position, model.getUrl());
 
-        Glide.with(holder.userImage.getContext())
-                .load(model.getUrl())
-                .into(holder.userImage);
+//        Glide.with(holder.userImage.getContext())
+//                .load(model.getUrl())
+//                .into(holder.userImage);
 
 
     }
@@ -63,10 +69,6 @@ public class UserAdapter extends FirestoreRecyclerAdapter<UserModel, UserAdapter
         TextView score;
         TextView rank;
 
-        CircleImageView firstPlace;
-        CircleImageView secondPlace;
-        CircleImageView thirdPlace;
-
         public UserViewHolder(@NonNull View itemView) {
             super(itemView);
 
@@ -76,9 +78,6 @@ public class UserAdapter extends FirestoreRecyclerAdapter<UserModel, UserAdapter
             score = itemView.findViewById(R.id.list_score);
             rank = itemView.findViewById(R.id.leaderboard_position);
 
-            firstPlace = itemView.findViewById(R.id.place1stProfile);
-            secondPlace = itemView.findViewById(R.id.place2ndProfile);
-            thirdPlace = itemView.findViewById(R.id.place3rdProfile);
         }
     }
 }
