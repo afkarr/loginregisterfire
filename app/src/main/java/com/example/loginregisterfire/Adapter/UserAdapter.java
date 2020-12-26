@@ -12,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.loginregisterfire.Interface.LeaderboardListener;
 import com.example.loginregisterfire.Model.UserModel;
 import com.example.loginregisterfire.R;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
