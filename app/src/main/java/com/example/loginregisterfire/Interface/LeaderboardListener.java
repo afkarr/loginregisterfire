@@ -3,5 +3,6 @@ package com.example.loginregisterfire.Interface;
 import android.view.View;
 
 public interface LeaderboardListener {
-    void topLeaderboardListener();
+    void topLeaderboardListener(int place, String url);
 }
+
