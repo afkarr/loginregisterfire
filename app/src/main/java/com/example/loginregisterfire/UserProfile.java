@@ -36,7 +36,7 @@ import android.view.ViewGroup;
 
 
 public class UserProfile extends Fragment {
-    TextView usernameText, fullNameText, email;
+    TextView usernameText, fullNameText, email, score;
     FirebaseFirestore fStore;
     FirebaseAuth fAuth;
     ImageView profilePicture;
@@ -60,9 +60,11 @@ public class UserProfile extends Fragment {
         usernameText = getActivity().findViewById(R.id.usernameText);
         fullNameText = getActivity().findViewById(R.id.fullNameText);
         email = getActivity().findViewById(R.id.emailText);
+        score = getActivity().findViewById(R.id.user_score);
         profilePicture = getActivity().findViewById(R.id.profilePicture);
         logoutBtn = getActivity().findViewById(R.id.logout_btn);
         editProfile_btn = getActivity().findViewById(R.id.editProfile_btn);
+
     }
 
     @Override
@@ -103,6 +105,8 @@ public class UserProfile extends Fragment {
                     Log.d("TAG", "onComplete: "+ task.getResult().getString("Username"));
                     fullNameText.setText(task.getResult().getString("FullName"));
                     email.setText(task.getResult().getString("Email"));
+                    Double sc = task.getResult().getDouble("Score");
+                    score.setText(String.format("%.0f", sc));
 
                     if(task.getResult().getString("isAdmin") != null){
                         usernameText.setText("Admin");
