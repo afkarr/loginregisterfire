@@ -130,10 +130,9 @@ public class BookingStep4Fragment extends Fragment {
                 Toast.makeText(getContext(), ""+e.getMessage(),Toast.LENGTH_SHORT).show();
             }
         });
-
-
     }
 
+    // if error its here
     private void addScore() {
         fAuth = FirebaseAuth.getInstance();
         fStore = FirebaseFirestore.getInstance();
@@ -167,7 +166,6 @@ public class BookingStep4Fragment extends Fragment {
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if(task.getResult().isEmpty())
                         {
-
                             //Set Data
                             userBooking.document()
                                     .set(bookingInformation)

@@ -6,12 +6,20 @@
     android:layout_height="match_parent"
     tools:context=".UserProfile">
 
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/background"
+        android:alpha="0.2"
+        />
+
     <Button
         android:id="@+id/logout_btn"
         android:layout_width="407dp"
         android:layout_height="53dp"
         android:layout_marginBottom="4dp"
         android:text="@string/main_logout"
+        style="@style/Widget.AppCompat.Button.Colored"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -22,6 +30,7 @@
         android:layout_height="53dp"
         android:layout_marginBottom="56dp"
         android:text="Edit Profile"
+        style="@style/Widget.AppCompat.Button.Colored"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -35,7 +44,7 @@
         android:fontFamily="@font/poppinsbold"
         android:gravity="center"
         android:text="@string/your_profile"
-        android:textColor="@color/colorAccent"
+        android:textColor="@color/cherryWine"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.35"
@@ -49,7 +58,7 @@
         android:layout_marginTop="28dp"
         android:fontFamily="@font/poppinsbold"
         android:text="@string/name"
-        android:textColor="@color/colorAccent"
+        android:textColor="@color/cherryWine"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.916"
@@ -67,6 +76,7 @@
         app:layout_constraintTop_toTopOf="parent"
         android:scaleType="centerCrop"
         android:src="@mipmap/ic_launcher_round" />
+
 
     <TextView
         android:id="@+id/emailText"

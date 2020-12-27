@@ -140,7 +140,9 @@ public class SignUp extends AppCompatActivity  {
                                     Log.d(TAG, "onSuccess: user Profile is created for "+userID);
                                 }
                             });
-                            startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                            if(isDonor.isChecked()) {
+                                startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                            }
 
                         }else {
                             Toast.makeText(SignUp.this, "Error!" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
