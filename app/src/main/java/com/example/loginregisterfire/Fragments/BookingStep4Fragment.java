@@ -34,8 +34,10 @@ import com.google.firebase.Timestamp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.google.firebase.storage.StorageReference;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -53,6 +55,8 @@ public class BookingStep4Fragment extends Fragment {
     SimpleDateFormat simpleDateFormat;
     LocalBroadcastManager localBroadcastManager;
     FirebaseAuth fAuth;
+    FirebaseFirestore fStore;
+    StorageReference storageReference;
     Unbinder unbinder;
 
     AlertDialog dialog;
@@ -118,7 +122,6 @@ public class BookingStep4Fragment extends Fragment {
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
-
                         addToUserBooking(bookingInformation);
                     }
                 }).addOnFailureListener(new OnFailureListener() {
@@ -127,6 +130,22 @@ public class BookingStep4Fragment extends Fragment {
                 Toast.makeText(getContext(), ""+e.getMessage(),Toast.LENGTH_SHORT).show();
             }
         });
+
+
+    }
+
+    private void addScore() {
+        fAuth = FirebaseAuth.getInstance();
+        fStore = FirebaseFirestore.getInstance();
+        String uId;
+        uId = fAuth.getCurrentUser().getUid();
+
+         DocumentReference documentReference = fStore
+                .collection("users")
+                .document(uId);
+
+         documentReference.update("Score", FieldValue.increment(10));
+         documentReference.update("BloodDonated", FieldValue.increment(1));
     }
 
     private void addToUserBooking(BookingInformation bookingInformation) {
@@ -155,6 +174,8 @@ public class BookingStep4Fragment extends Fragment {
                                     .addOnSuccessListener(new OnSuccessListener<Void>() {
                                         @Override
                                         public void onSuccess(Void aVoid) {
+
+                                            addScore();
 
                                             if(dialog.isShowing())
                                                 dialog.dismiss();
