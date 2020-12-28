@@ -119,29 +119,47 @@ public class SignUp extends AppCompatActivity  {
                         if(task.isSuccessful()){
                             Toast.makeText(SignUp.this, "User Created", Toast.LENGTH_SHORT).show();
                             userID = fAuth.getCurrentUser().getUid();
-                            DocumentReference documentReference = fStore.collection("users").document(userID);
-                            Map<String, Object> user = new HashMap<>();
-                            user.put("FullName", fullName);
-                            user.put("Email", email);
-                            user.put("Username", Username);
-                            user.put("Score", points);
+                            DocumentReference documentReferenceUser = fStore.collection("users").document(userID);
+                            DocumentReference documentReferenceAdmin = fStore.collection("admins").document(userID);
+
+                            if(isDonor.isChecked()) {
+                                Map<String, Object> user = new HashMap<>();
+                                user.put("FullName", fullName);
+                                user.put("Email", email);
+                                user.put("Username", Username);
+                                user.put("Score", points);
+                                user.put("isAdmin", "0");
+
+                                documentReferenceUser.set(user).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<Void> task) {
+                                        Log.d(TAG, "onSuccess: user Profile is created for "+userID);
+                                    }
+                                });
+                            }
+
 
                             if(isAdmin.isChecked()){
-                                user.put("isAdmin", "1");
+                                Map<String, Object> user1 = new HashMap<>();
+                                user1.put("FullName", fullName);
+                                user1.put("Email", email);
+                                user1.put("Username", Username);
+                                user1.put("isAdmin", "1");
+
+                                documentReferenceAdmin.set(user1).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<Void> task) {
+                                        Log.d(TAG, "onSuccess: user Profile is created for "+userID);
+                                    }
+                                });
                             }
 
-                            if(isDonor.isChecked()){
-                                user.put("isDonor", "1");
-                            }
-
-                            documentReference.set(user).addOnCompleteListener(new OnCompleteListener<Void>() {
-                                @Override
-                                public void onComplete(@NonNull Task<Void> task) {
-                                    Log.d(TAG, "onSuccess: user Profile is created for "+userID);
-                                }
-                            });
                             if(isDonor.isChecked()) {
                                 startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                            }
+
+                            if(isAdmin.isChecked()){
+                                startActivity(new Intent(getApplicationContext(), AdminView.class));
                             }
 
                         }else {

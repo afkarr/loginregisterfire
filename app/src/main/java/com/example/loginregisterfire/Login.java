@@ -17,6 +17,10 @@ import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
 
 public class Login extends AppCompatActivity {
 
@@ -66,16 +70,51 @@ public class Login extends AppCompatActivity {
                 progressBar.setVisibility(View.VISIBLE);
 
                 //authenticate the user
+                FirebaseFirestore fStore = FirebaseFirestore.getInstance();
+                CollectionReference userRef = fStore.collection("users");
+                CollectionReference adminRef = fStore.collection("admins");
 
                 fAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
-
-
-
-                            Toast.makeText(Login.this, "Logged In Successfully", Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                            String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+                            userRef.document(uid).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                                @Override
+                                public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                                    if(task.isSuccessful()){
+                                        DocumentSnapshot document = task.getResult();
+                                        if(document.exists()){
+                                            String isAdmin = document.getString("isAdmin");
+                                            if(isAdmin.equals("1")) {
+                                                Toast.makeText(Login.this, "Welcome Back, Admin", Toast.LENGTH_SHORT).show();
+                                                startActivity(new Intent(getApplicationContext(), AdminView.class));
+                                            }else if(isAdmin.equals("0")){
+                                                Toast.makeText(Login.this, "Welcome, Donor!", Toast.LENGTH_SHORT).show();
+                                                startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                                            }
+                                        }
+                                    }
+                                }
+                            });
+                            adminRef.document(uid).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                                @Override
+                                public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                                    DocumentSnapshot document = task.getResult();
+                                    if (document.exists()) {
+                                        String isAdmin = document.getString("isAdmin");
+                                        if (isAdmin.equals("1")) {
+                                            Toast.makeText(Login.this, "Welcome Back, Admin", Toast.LENGTH_SHORT).show();
+                                            startActivity(new Intent(getApplicationContext(), AdminView.class));
+                                        } else if (isAdmin.equals("0")) {
+                                            Toast.makeText(Login.this, "Welcome, Donor!", Toast.LENGTH_SHORT).show();
+                                            startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                                        }
+                                    }
+                                }
+                            });
+                            //Toast.makeText(Login.this, "Logged In Successfully", Toast.LENGTH_SHORT).show();
+                            //startActivity(new Intent(getApplicationContext(), MainActivity.class));
                         }else{
                             Toast.makeText(Login.this, "Error!" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                             progressBar.setVisibility(View.GONE);

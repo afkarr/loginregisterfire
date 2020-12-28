@@ -107,13 +107,7 @@ public class UserProfile extends Fragment {
                     email.setText(task.getResult().getString("Email"));
                     Double sc = task.getResult().getDouble("Score");
                     score.setText(String.format("%.0f", sc));
-
-                    if(task.getResult().getString("isAdmin") != null){
-                        usernameText.setText("Admin");
-                    }
-                    if(task.getResult().getString("isDonor") != null){
-                        usernameText.setText("Donor");
-                    }
+                    
                 }
             }
         });
