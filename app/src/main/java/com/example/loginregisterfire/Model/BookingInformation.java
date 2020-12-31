@@ -3,16 +3,19 @@ package com.example.loginregisterfire.Model;
 import com.google.firebase.Timestamp;
 
 public class BookingInformation {
-    private String customerName, customerPhone, time, sectionId, sectionName, hospitalId, hospitalName, hospitalAddress;
+    private String donorName, donorEmail, customerPhone, time, sectionId, sectionName, hospitalId, hospitalName, hospitalAddress;
     private Long slot;
+
+
     private Timestamp timestamp;
     private boolean done;
 
     public BookingInformation() {
     }
 
-    public BookingInformation(String customerName, String customerPhone, String time, String sectionId, String sectionName, String hospitalId, String hospitalName, String hospitalAddress, Long slot) {
-        this.customerName = customerName;
+    public BookingInformation(String donorName, String donorEmail, String customerPhone, String time, String sectionId, String sectionName, String hospitalId, String hospitalName, String hospitalAddress, Long slot) {
+        this.donorName = donorName;
+        this.donorEmail = donorEmail;
         this.customerPhone = customerPhone;
         this.time = time;
         this.sectionId = sectionId;
@@ -23,12 +26,12 @@ public class BookingInformation {
         this.slot = slot;
     }
 
-    public String getCustomerName() {
-        return customerName;
+    public String getDonorEmail() {
+        return donorEmail;
     }
 
-    public void setCustomerName(String customerName) {
-        this.customerName = customerName;
+    public void setDonorEmail(String donorEmail) {
+        this.donorEmail = donorEmail;
     }
 
     public String getCustomerPhone() {
@@ -109,5 +112,13 @@ public class BookingInformation {
 
     public void setDone(boolean done) {
         this.done = done;
+    }
+
+    public String getDonorName() {
+        return donorName;
+    }
+
+    public void setDonorName(String donorName) {
+        this.donorName = donorName;
     }
 }

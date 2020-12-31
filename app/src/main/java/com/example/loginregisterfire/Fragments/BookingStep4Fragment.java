@@ -12,6 +12,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.CalendarContract;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,6 +25,7 @@ import androidx.fragment.app.Fragment;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
 import com.example.loginregisterfire.Common.Common;
+import com.example.loginregisterfire.Interface.MyCallBack;
 import com.example.loginregisterfire.Model.BookingInformation;
 import com.example.loginregisterfire.R;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -34,6 +36,7 @@ import com.google.firebase.Timestamp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -52,11 +55,15 @@ import dmax.dialog.SpotsDialog;
 
 public class BookingStep4Fragment extends Fragment {
 
+    private static final String TAG = "DB";
     SimpleDateFormat simpleDateFormat;
     LocalBroadcastManager localBroadcastManager;
     FirebaseAuth fAuth;
     FirebaseFirestore fStore;
     StorageReference storageReference;
+    String donorFullName;
+    String donorEmail;
+
     Unbinder unbinder;
 
     AlertDialog dialog;
@@ -94,6 +101,24 @@ public class BookingStep4Fragment extends Fragment {
         //Create booking information
         BookingInformation bookingInformation = new BookingInformation();
 
+        callUserCredential(new MyCallBack() {
+            @Override
+            public void onCallFullName(String fullName) {
+                bookingInformation.setDonorName(fullName);
+                //Log for successfully calling the interface
+                Log.d(TAG, "donorFullName bookingInformation: " + fullName);
+            }
+
+            @Override
+            public void onCallEmail(String Email) {
+                bookingInformation.setDonorEmail(Email);
+                //Log for successfully calling the interface
+                Log.d(TAG, "donorEmail bookingInformation: " + Email);
+            }
+        });
+
+        //bookingInformation.setDonorName(donorFullName);
+        //bookingInformation.setDonorEmail(donorEmail);
         bookingInformation.setTimestamp(timestamp);
         bookingInformation.setDone(false);
         bookingInformation.setSectionId(Common.currentSection.getSectionId());
@@ -132,7 +157,46 @@ public class BookingStep4Fragment extends Fragment {
         });
     }
 
-    // if error its here
+    private void callUserCredential(MyCallBack myCallBack) {
+        fAuth = FirebaseAuth.getInstance();
+        fStore = FirebaseFirestore.getInstance();
+        String userID = fAuth.getCurrentUser().getUid();
+
+
+        DocumentReference docRef = fStore
+                .collection("users")
+                .document(userID);
+
+        docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if(task.isSuccessful()){
+                    DocumentSnapshot document = task.getResult();
+                    if(document.exists()){
+
+                        //Log for successfully fetching data from firebase
+                        Log.d(TAG,"User full name: " + document.getString("FullName"));
+                        Log.d(TAG, "User email: " + document.getString("Email"));
+
+                        String fullName = document.getString("FullName");
+                        String eMail = document.getString("Email");
+
+                        //Log for successfully setting the data into the variables
+                        Log.d(TAG, "donorFullName set: " + fullName);
+                        Log.d(TAG, "donorEmail set: " + eMail);
+
+                        //Interface callback
+                        myCallBack.onCallFullName(fullName);
+                        myCallBack.onCallEmail(eMail);
+
+                    }
+                }
+            }
+        });
+    }
+
+
+    // add Scoring method
     private void addScore() {
         fAuth = FirebaseAuth.getInstance();
         fStore = FirebaseFirestore.getInstance();
