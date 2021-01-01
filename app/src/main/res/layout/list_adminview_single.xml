@@ -47,7 +47,7 @@
             android:layout_toRightOf="@id/list_image"
             android:paddingLeft="15dp"
             android:paddingRight="10dp"
-            android:text="Username"
+            android:text="Full Name"
             android:textColor="#000"
             android:textSize="12sp" />
 
