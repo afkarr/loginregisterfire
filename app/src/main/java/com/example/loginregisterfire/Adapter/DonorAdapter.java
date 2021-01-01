@@ -14,20 +14,20 @@ import com.example.loginregisterfire.R;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 
-public class DonorAdapter extends FirestoreRecyclerAdapter<DonorModel, DonorAdapter.UserViewHolder> {
+public class DonorAdapter extends FirestoreRecyclerAdapter<DonorModel, DonorAdapter.DonorViewHolder> {
 
     public DonorAdapter(@NonNull FirestoreRecyclerOptions<DonorModel> options) {
         super(options);
     }
 
     @Override
-    protected void onBindViewHolder(@NonNull DonorAdapter.UserViewHolder holder, int position, @NonNull DonorModel model) {
-        holder.FullName.setText(model.getDonorName());
-        holder.Email.setText(model.getDonorEmail());
-        holder.HospitalName.setText(model.getHospitalName());
-        holder.Time.setText(model.getTime());
-        holder.Status.setText(model.isDone() + "");
+    protected void onBindViewHolder(@NonNull DonorAdapter.DonorViewHolder holder, int position, @NonNull DonorModel model) {
         holder.rank.setText(String.valueOf(position + 1));
+        holder.donorName.setText(model.getDonorName());
+        holder.donorEmail.setText(model.getDonorEmail());
+        holder.hospitalName.setText(model.getHospitalName());
+        holder.bookingTime.setText(model.getTime());
+        holder.status.setText(model.isDone() + "");
 
         holder.done_btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -39,26 +39,31 @@ public class DonorAdapter extends FirestoreRecyclerAdapter<DonorModel, DonorAdap
 
     @NonNull
     @Override
-    public DonorAdapter.UserViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public DonorAdapter.DonorViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_adminview_single, parent, false);
-        return new UserViewHolder(view);
+        return new DonorViewHolder(view);
     }
 
-    public class UserViewHolder extends RecyclerView.ViewHolder {
+    public class DonorViewHolder extends RecyclerView.ViewHolder {
 
-        TextView FullName, Email, Time, HospitalName, Status, rank;
+        TextView rank;
+        TextView donorName;
+        TextView donorEmail;
+        TextView hospitalName;
+        TextView bookingTime;
+        TextView status;
         Button done_btn;
 
-        public UserViewHolder(@NonNull View itemView) {
+        public DonorViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            FullName = itemView.findViewById(R.id.list_username);
-            Email = itemView.findViewById(R.id.list_email);
-            Time = itemView.findViewById(R.id.list_booking_time);
-            HospitalName = itemView.findViewById(R.id.list_hospital_name);
-            done_btn = itemView.findViewById(R.id.done_btn);
-            Status = itemView.findViewById(R.id.status_booking);
             rank = itemView.findViewById(R.id.adminview_position);
+            donorName = itemView.findViewById(R.id.list_username);
+            donorEmail = itemView.findViewById(R.id.list_email);
+            hospitalName = itemView.findViewById(R.id.list_hospital_name);
+            bookingTime = itemView.findViewById(R.id.list_booking_time);
+            status = itemView.findViewById(R.id.status_booking);
+            done_btn = itemView.findViewById(R.id.done_btn);
         }
     }
 }
