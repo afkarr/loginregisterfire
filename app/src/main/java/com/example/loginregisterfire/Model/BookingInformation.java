@@ -3,7 +3,7 @@ package com.example.loginregisterfire.Model;
 import com.google.firebase.Timestamp;
 
 public class BookingInformation {
-    private String donorName, donorEmail, customerPhone, time, sectionId, sectionName, hospitalId, hospitalName, hospitalAddress;
+    private String donorUID, donorName, donorEmail, customerPhone, time, sectionId, sectionName, hospitalId, hospitalName, hospitalAddress;
     private Long slot;
 
 
@@ -13,7 +13,8 @@ public class BookingInformation {
     public BookingInformation() {
     }
 
-    public BookingInformation(String donorName, String donorEmail, String customerPhone, String time, String sectionId, String sectionName, String hospitalId, String hospitalName, String hospitalAddress, Long slot) {
+    public BookingInformation(String donorUID, String donorName, String donorEmail, String customerPhone, String time, String sectionId, String sectionName, String hospitalId, String hospitalName, String hospitalAddress, Long slot) {
+        this.donorUID = donorUID;
         this.donorName = donorName;
         this.donorEmail = donorEmail;
         this.customerPhone = customerPhone;
@@ -120,5 +121,13 @@ public class BookingInformation {
 
     public void setDonorName(String donorName) {
         this.donorName = donorName;
+    }
+
+    public String getDonorUID() {
+        return donorUID;
+    }
+
+    public void setDonorUID(String donorUID) {
+        this.donorUID = donorUID;
     }
 }

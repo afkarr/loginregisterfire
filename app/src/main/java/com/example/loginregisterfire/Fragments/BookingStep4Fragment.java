@@ -117,8 +117,12 @@ public class BookingStep4Fragment extends Fragment {
             }
         });
 
-        //bookingInformation.setDonorName(donorFullName);
-        //bookingInformation.setDonorEmail(donorEmail);
+        //store donor UID
+        fAuth = FirebaseAuth.getInstance();
+        fStore = FirebaseFirestore.getInstance();
+        String donorUID = fAuth.getCurrentUser().getUid();
+
+        bookingInformation.setDonorUID(donorUID);
         bookingInformation.setTimestamp(timestamp);
         bookingInformation.setDone(false);
         bookingInformation.setSectionId(Common.currentSection.getSectionId());

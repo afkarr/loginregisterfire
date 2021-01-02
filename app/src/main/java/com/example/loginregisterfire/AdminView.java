@@ -64,7 +64,9 @@ public class AdminView extends AppCompatActivity {
         //Query
         Query query = fStore.collectionGroup("Booking")
                 .whereEqualTo("done", false)
-                .whereNotEqualTo("donorName", null);
+                .whereNotEqualTo("donorName", null)
+                //if error its because of line 69
+                .orderBy("done", Query.Direction.DESCENDING);
 
         //RecyclerOptions
         FirestoreRecyclerOptions<DonorModel> options = new FirestoreRecyclerOptions.Builder<DonorModel>()
