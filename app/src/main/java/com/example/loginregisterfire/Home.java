@@ -74,6 +74,11 @@ public class Home extends Fragment implements ILookbookLoadListener, IBannerLoad
     {
         startActivity(new Intent(getActivity(), Booking.class));
     }
+    @OnClick(R.id.card_view_rewards)
+    void rewards()
+    {
+        startActivity(new Intent(getActivity(), DonorRewards.class));
+    }
 
     @BindView(R.id.card_booking_info)
     CardView card_booking_info;

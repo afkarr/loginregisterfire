@@ -148,7 +148,7 @@
 
             <androidx.cardview.widget.CardView
                 xmlns:app="http://schemas.android.com/apk/res-auto"
-                android:id="@+id/card_view_notification"
+                android:id="@+id/card_view_rewards"
                 android:layout_marginRight="8dp"
                 android:layout_width="100dp"
                 android:layout_weight="1"
