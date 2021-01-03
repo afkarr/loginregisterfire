@@ -161,13 +161,13 @@
                     android:layout_height="wrap_content">
 
                     <ImageView
-                        app:srcCompat="@drawable/ic_baseline_notifications_24"
+                        app:srcCompat="@drawable/ic_gift"
                         android:layout_width="50dp"
                         android:layout_gravity="center_horizontal"
                         android:layout_height="50dp" />
 
                     <TextView
-                        android:text="Notification"
+                        android:text="Rewards"
                         android:fontFamily="@font/poppinsbold"
                         android:layout_gravity="center_horizontal"
                         android:layout_width="wrap_content"

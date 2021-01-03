@@ -14,24 +14,35 @@
         android:orientation="vertical"
         >
 
-        <TextView
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+        <TextView
+            android:layout_width="360dp"
+            android:layout_height="match_parent"
             android:textAlignment="center"
+            android:layout_marginTop="10dp"
             android:text="A D M I N  S I D E"
             android:fontFamily="@font/poppinsbold"
             android:textColor="#ffffff"
             android:textSize="18sp"
             android:textStyle="bold" />
 
-        <Button
-            android:id="@+id/logout_admin_btn"
+            <ImageView
+                android:id="@+id/logout_admin_btn"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                app:srcCompat="@drawable/ic_logout" />
+
+            <Button
             android:layout_width="407dp"
             android:layout_height="53dp"
             android:layout_marginBottom="4dp"
             android:text="@string/main_logout"
-            style="@style/Widget.AppCompat.Button.Colored" />
-
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:visibility="gone"/>
+        </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"

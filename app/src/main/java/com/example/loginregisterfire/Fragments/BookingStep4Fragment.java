@@ -201,19 +201,19 @@ public class BookingStep4Fragment extends Fragment {
 
 
     // add Scoring method
-    private void addScore() {
-        fAuth = FirebaseAuth.getInstance();
-        fStore = FirebaseFirestore.getInstance();
-        String uId;
-        uId = fAuth.getCurrentUser().getUid();
-
-         DocumentReference documentReference = fStore
-                .collection("users")
-                .document(uId);
-
-         documentReference.update("Score", FieldValue.increment(10));
-         documentReference.update("BloodDonated", FieldValue.increment(1));
-    }
+//    private void addScore() {
+//        fAuth = FirebaseAuth.getInstance();
+//        fStore = FirebaseFirestore.getInstance();
+//        String uId;
+//        uId = fAuth.getCurrentUser().getUid();
+//
+//         DocumentReference documentReference = fStore
+//                .collection("users")
+//                .document(uId);
+//
+//         documentReference.update("Score", FieldValue.increment(10));
+//         documentReference.update("BloodDonated", FieldValue.increment(1));
+//    }
 
     private void addToUserBooking(BookingInformation bookingInformation) {
 
@@ -241,7 +241,7 @@ public class BookingStep4Fragment extends Fragment {
                                         @Override
                                         public void onSuccess(Void aVoid) {
 
-                                            addScore();
+                                            //addScore();
 
                                             if(dialog.isShowing())
                                                 dialog.dismiss();

@@ -2,6 +2,7 @@ package com.example.loginregisterfire.Model;
 
 public class DonorModel {
 
+    private String donorUID;
     private String donorName;
     private String donorEmail;
     private String hospitalName;
@@ -12,7 +13,8 @@ public class DonorModel {
     public DonorModel() {
     }
 
-    public DonorModel(String donorName, String donorEmail, String hospitalName, String time, boolean done, String rank) {
+    public DonorModel(String donorUID, String donorName, String donorEmail, String hospitalName, String time, boolean done, String rank) {
+        this.donorUID = donorUID;
         this.donorName = donorName;
         this.donorEmail = donorEmail;
         this.hospitalName = hospitalName;
@@ -68,5 +70,13 @@ public class DonorModel {
 
     public void setRank(String rank) {
         this.rank = rank;
+    }
+
+    public String getDonorUID() {
+        return donorUID;
+    }
+
+    public void setDonorUID(String donorUID) {
+        this.donorUID = donorUID;
     }
 }
