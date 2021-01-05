@@ -99,7 +99,7 @@ public class RewardAdapter extends FirestoreRecyclerAdapter<RewardModel, RewardA
                                                 String rewardDesc = document.getString("rewardDesc");
                                                 Log.d("REWARD", "rewardDesc: " + rewardDesc + " on position: "+ (position + 1));
 
-                                                //insert data into user
+                                                //insert reward into user database
                                                 Map<String,Object> rewards = new HashMap<>();
                                                 rewards.put("awardReceived", rewardDesc);
                                                 documentReference1.update(rewards);

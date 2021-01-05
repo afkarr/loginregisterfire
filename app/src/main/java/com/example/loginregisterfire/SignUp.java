@@ -38,6 +38,7 @@ public class SignUp extends AppCompatActivity  {
     FirebaseAuth fAuth;
     FirebaseFirestore fStore;
     long points = 0;
+    long amount = 0;
     String userID;
 
     @Override
@@ -129,6 +130,7 @@ public class SignUp extends AppCompatActivity  {
                                 user.put("Username", Username);
                                 user.put("Score", points);
                                 user.put("isAdmin", "0");
+                                user.put("BloodDonated", amount);
 
                                 documentReferenceUser.set(user).addOnCompleteListener(new OnCompleteListener<Void>() {
                                     @Override
