@@ -18,8 +18,15 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/reward_setup"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                app:srcCompat="@drawable/ic_gift_2" />
+
         <TextView
-            android:layout_width="360dp"
+            android:layout_width="300dp"
             android:layout_height="match_parent"
             android:textAlignment="center"
             android:layout_marginTop="10dp"
@@ -45,6 +52,7 @@
         </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
+        android:paddingTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/admin_view_recycler"

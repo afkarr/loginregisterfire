@@ -64,6 +64,15 @@ public class AdminView extends AppCompatActivity {
                 finish();
             }
         });
+
+        ImageView adminReward;
+        adminReward = findViewById(R.id.reward_setup);
+        adminReward.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(AdminView.this, RewardAdmin.class));
+            }
+        });
     }
 
     private void setupRecyclerView() {
