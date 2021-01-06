@@ -5,10 +5,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -44,6 +46,17 @@ public class RewardAdmin extends AppCompatActivity {
         rewardDescription = findViewById(R.id.rewardDesc);
         DonationRequired = findViewById(R.id.donationReq);
         rewardSubmit = findViewById(R.id.admin_reward_button);
+
+        //claimedAwardButton
+        ImageView claimedRewardBtn;
+        claimedRewardBtn = findViewById(R.id.reward_setup);
+        claimedRewardBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(RewardAdmin.this, ClaimedRewardDonor.class));
+            }
+        });
+
 
         //RecyclerView
         adminRewardRecycler = findViewById(R.id.admin_reward_recycler);
@@ -83,7 +96,7 @@ public class RewardAdmin extends AppCompatActivity {
 
         //Query
         Query query = fStore.collection("Rewards")
-                .orderBy("donationReq", Query.Direction.ASCENDING);;
+                .orderBy("donationReq", Query.Direction.ASCENDING);
 
         FirestoreRecyclerOptions<RewardModel> options = new FirestoreRecyclerOptions.Builder<RewardModel>()
                 .setQuery(query, RewardModel.class)

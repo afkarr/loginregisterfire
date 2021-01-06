@@ -5,6 +5,7 @@ public class UserModel {
     private String FullName;
     private String Email;
     private long Score;
+    private String awardReceived;
 
     public String getUrl() {
         return url;
@@ -19,11 +20,12 @@ public class UserModel {
     public UserModel() {
     }
 
-    public UserModel(String fullName, String email, long score, String url) {
+    public UserModel(String fullName, String email, long score, String url, String awardReceived) {
         this.FullName = fullName;
         this.Email = email;
         this.Score = score;
         this.url = url;
+        this.awardReceived = awardReceived;
     }
 
     public String getFullName() {
@@ -48,5 +50,13 @@ public class UserModel {
 
     public void setScore(long score) {
         Score = score;
+    }
+
+    public String getAwardReceived() {
+        return awardReceived;
+    }
+
+    public void setAwardReceived(String awardReceived) {
+        this.awardReceived = awardReceived;
     }
 }

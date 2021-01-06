@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginBottom="8dp"
@@ -20,7 +20,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/adminview_position"
+            android:id="@+id/claim_position"
             android:textStyle="bold"
             android:textColor="#000"
             android:text="##"
@@ -37,7 +37,7 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/list_username"
+            android:id="@+id/claim_username"
             android:layout_width="173dp"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
@@ -52,7 +52,7 @@
             android:textSize="12sp" />
 
         <TextView
-            android:id="@+id/list_email"
+            android:id="@+id/claim_email"
             android:layout_width="173dp"
             android:layout_height="wrap_content"
             android:paddingLeft="15dp"
@@ -67,62 +67,23 @@
             />
 
         <TextView
-            android:id="@+id/list_hospital_name"
-            android:layout_width="173dp"
-            android:layout_height="wrap_content"
-            android:paddingLeft="15dp"
-            android:paddingRight="10dp"
-            android:fontFamily="@font/poppinsmedium"
-            android:text="Hospital Name"
-            android:textSize="12sp"
-            android:layout_toRightOf="@+id/list_username"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="0dp"
-            android:textColor="#000"
-            />
-
-        <TextView
-            android:id="@+id/list_booking_time"
-            android:layout_width="173dp"
-            android:layout_height="wrap_content"
-            android:paddingLeft="15dp"
-            android:paddingRight="10dp"
-            android:fontFamily="@font/poppinsmedium"
-            android:text="Booked Time"
-            android:textSize="12sp"
-            android:layout_toRightOf="@+id/list_username"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="0dp"
-            android:textColor="#000"
-            />
-
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:gravity="center"
-        android:orientation="vertical">
-
-        <TextView
-            android:layout_marginTop="0dp"
-            android:id="@+id/status_booking"
+            android:id="@+id/claim_reward_description"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Status"
-            android:textSize="15sp"
-            android:textColor="#000"/>
-
-       <Button
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-           style="@style/Widget.AppCompat.Button.Colored"
-           android:text="Done"
-           android:id="@+id/done_btn"
-           />
+            android:paddingLeft="15dp"
+            android:paddingRight="10dp"
+            android:fontFamily="@font/poppinsmedium"
+            android:text="Reward Description"
+            android:textSize="12sp"
+            android:layout_toRightOf="@+id/list_username"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="0dp"
+            android:textColor="#000"
+            />
 
 
     </LinearLayout>
+
+
 
 </LinearLayout>

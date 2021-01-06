@@ -30,7 +30,7 @@
             android:layout_height="match_parent"
             android:textAlignment="center"
             android:layout_marginTop="10dp"
-            android:text="A D M I N  S I D E"
+            android:text="B O O K I N G  M A N A G E M E N T"
             android:fontFamily="@font/poppinsbold"
             android:textColor="#ffffff"
             android:textSize="18sp"

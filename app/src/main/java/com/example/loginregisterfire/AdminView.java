@@ -47,7 +47,7 @@ public class AdminView extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_view);
-
+        
         //RecyclerView
         adminRecyclerList = findViewById(R.id.admin_view_recycler);
 

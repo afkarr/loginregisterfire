@@ -15,6 +15,8 @@ import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 
 public class HistoryAdapter extends FirestoreRecyclerAdapter<HistoryModel, HistoryAdapter.HistoryViewHolder> {
 
+    String pending;
+
     public HistoryAdapter(@NonNull FirestoreRecyclerOptions<HistoryModel> options) {
         super(options);
     }
@@ -26,7 +28,15 @@ public class HistoryAdapter extends FirestoreRecyclerAdapter<HistoryModel, Histo
         holder.historyUserEmail.setText(model.getDonorEmail());
         holder.historyHospitalName.setText(model.getHospitalName());
         holder.historyBookedTime.setText(model.getTime());
-        holder.historyStatus.setText(model.isDone() + "");
+
+        if(model.isDone() == false)
+        {
+            pending = "Pending";
+        }
+        else
+            pending = "Done";
+
+        holder.historyStatus.setText(pending);
     }
 
     @NonNull

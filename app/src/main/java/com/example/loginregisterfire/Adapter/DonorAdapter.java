@@ -18,6 +18,7 @@ import com.google.firebase.firestore.DocumentSnapshot;
 
 public class DonorAdapter extends FirestoreRecyclerAdapter<DonorModel, DonorAdapter.DonorViewHolder> {
 
+    String pending;
     private OnListAdminClick onListAdminClick;
 
     public DonorAdapter(@NonNull FirestoreRecyclerOptions<DonorModel> options, OnListAdminClick onListAdminClick) {
@@ -32,7 +33,16 @@ public class DonorAdapter extends FirestoreRecyclerAdapter<DonorModel, DonorAdap
         holder.donorEmail.setText(model.getDonorEmail());
         holder.hospitalName.setText(model.getHospitalName());
         holder.bookingTime.setText(model.getTime());
-        holder.status.setText(model.isDone() + "");
+        //holder.status.setText(model.isDone() + "");
+
+        if(model.isDone() == false)
+        {
+            pending = "Pending";
+        }
+        else
+            pending = "Done";
+
+        holder.status.setText(pending);
 
         holder.done_btn.setOnClickListener(new View.OnClickListener() {
             @Override
